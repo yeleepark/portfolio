@@ -16,8 +16,11 @@ export default function PortfolioLayout({
 }) {
   const pathname = usePathname();
 
-  const activeSection =
-    validSections.find((s) => pathname === `/${s}`) ?? null;
+  // Parse pathname to extract section (pathname format: /locale/section or /locale)
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const section = pathSegments.length > 1 ? pathSegments[1] : null;
+
+  const activeSection = section && validSections.includes(section) ? section : null;
 
   return (
     <div className="min-h-screen md:h-screen md:overflow-hidden min-w-[360px] bg-zinc-200 dark:bg-zinc-900 flex flex-col transition-colors">

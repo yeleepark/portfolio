@@ -3,6 +3,8 @@
 import WindowTitleBar from "@/components/ui/WindowTitleBar";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useLocale } from "@/i18n/context";
+import { getDictionary } from "@/i18n";
 
 type Direction = "front" | "back" | "left" | "right";
 
@@ -14,6 +16,8 @@ const directionImages: Record<Direction, string> = {
 };
 
 export default function WindowCard() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
   const [direction, setDirection] = useState<Direction>("front");
   const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
     null
@@ -97,25 +101,25 @@ export default function WindowCard() {
         <button
           className="absolute top-0 left-1/4 right-1/4 h-1/4 z-10 cursor-pointer"
           onClick={() => setDirection("back")}
-          aria-label="뒤돌기"
+          aria-label={dict.windowCard.ariaBack}
         />
         {/* 클릭 영역: 하 */}
         <button
           className="absolute bottom-0 left-1/4 right-1/4 h-1/4 z-10 cursor-pointer"
           onClick={() => setDirection("front")}
-          aria-label="앞보기"
+          aria-label={dict.windowCard.ariaFront}
         />
         {/* 클릭 영역: 좌 */}
         <button
           className="absolute top-1/4 bottom-1/4 left-0 w-1/4 z-10 cursor-pointer"
           onClick={() => setDirection("left")}
-          aria-label="왼쪽 보기"
+          aria-label={dict.windowCard.ariaLeft}
         />
         {/* 클릭 영역: 우 */}
         <button
           className="absolute top-1/4 bottom-1/4 right-0 w-1/4 z-10 cursor-pointer"
           onClick={() => setDirection("right")}
-          aria-label="오른쪽 보기"
+          aria-label={dict.windowCard.ariaRight}
         />
 
         <div className="h-full p-4 sm:p-8 md:p-12 flex items-center justify-center">

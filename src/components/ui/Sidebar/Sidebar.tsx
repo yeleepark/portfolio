@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale } from "@/i18n/context";
 
 const menuItems = [
   { id: "about", label: "About" },
@@ -13,13 +16,14 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ activeItem }: SidebarProps) {
+  const locale = useLocale();
   return (
     <aside className="fixed left-0 top-16 w-48 h-full bg-white dark:bg-zinc-800 border-r-2 border-black dark:border-zinc-500 p-4 z-50 shadow-sidebar transition-colors">
       <nav className="flex flex-col gap-2">
         {menuItems.map((item) => (
           <Link
             key={item.id}
-            href={`/${item.id}`}
+            href={`/${locale}/${item.id}`}
             className={`
               w-full border-2 border-black dark:border-zinc-500 px-4 py-3 font-bold text-sm text-left block
               transition-all

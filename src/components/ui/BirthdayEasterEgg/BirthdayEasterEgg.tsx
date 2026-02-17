@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocale } from "@/i18n/context";
+import { getDictionary } from "@/i18n";
 
 function Confetti() {
   const pieces = useMemo(
@@ -50,6 +52,8 @@ function Confetti() {
 }
 
 export default function BirthdayEasterEgg() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
   const [show, setShow] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -91,16 +95,16 @@ export default function BirthdayEasterEgg() {
             <div className="relative border-2 border-black dark:border-zinc-500 bg-white dark:bg-zinc-800 shadow-window max-w-sm w-full">
               <div className="border-b-2 border-black dark:border-zinc-500 px-3 py-2 flex items-center justify-between">
                 <span className="font-bold text-xs sm:text-sm text-black dark:text-zinc-100 flex-1 text-center">
-                  🎂 H A P P Y  B I R T H D A Y 🎂
+                  {dict.birthday.title}
                 </span>
               </div>
               <div className="p-6 text-center space-y-3">
                 <p className="text-4xl">🎉🥳🎈</p>
                 <p className="text-sm text-black dark:text-zinc-100 font-bold">
-                  오늘은 저의 생일입니다!
+                  {dict.birthday.message}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-zinc-400">
-                  방문해 주셔서 감사합니다 :)
+                  {dict.birthday.thanks}
                 </p>
               </div>
             </div>

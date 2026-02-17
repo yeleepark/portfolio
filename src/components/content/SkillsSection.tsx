@@ -1,27 +1,34 @@
-const skills = [
-  {
-    category: "Frontend",
-    items: ["React", "TypeScript", "Next.js"],
-  },
-  {
-    category: "Styling",
-    items: ["HTML", "CSS", "Tailwind CSS", "MUI"],
-  },
-  {
-    category: "State Management",
-    items: ["React Query", "Zustand"],
-  },
-  {
-    category: "Cloud / Infra",
-    items: ["AWS CloudFront", "AWS S3", "AWS Amplify"],
-  },
-  {
-    category: "Tools",
-    items: ["Slack", "Jira", "Figma"],
-  },
-];
+"use client";
+
+import { useLocale } from "@/i18n/context";
+import { getDictionary } from "@/i18n";
 
 export default function SkillsSection() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
+
+  const skills = [
+    {
+      category: dict.skills.frontend,
+      items: ["React", "TypeScript", "Next.js"],
+    },
+    {
+      category: dict.skills.styling,
+      items: ["HTML", "CSS", "Tailwind CSS", "MUI"],
+    },
+    {
+      category: dict.skills.stateManagement,
+      items: ["React Query", "Zustand"],
+    },
+    {
+      category: dict.skills.cloudInfra,
+      items: ["AWS CloudFront", "AWS S3", "AWS Amplify"],
+    },
+    {
+      category: dict.skills.tools,
+      items: ["Slack", "Jira", "Figma"],
+    },
+  ];
   return (
     <div className="space-y-5">
       {skills.map((group) => (

@@ -7,14 +7,18 @@ import SkillsSection from "@/components/content/SkillsSection";
 import ProjectsSection from "@/components/content/ProjectsSection";
 import WorkExperienceSection from "@/components/content/WorkExperienceSection";
 import ContactSection from "@/components/content/ContactSection";
+import { useLocale } from "@/i18n/context";
 
-const windowTitles: Record<string, string> = {
-  about: "A B O U T",
-  skills: "S K I L L S",
-  projects: "P R O J E C T S",
-  "work-experience": "W O R K  E X P E R I E N C E",
-  contact: "C O N T A C T",
-};
+function getWindowTitle(section: string): string {
+  const titles: Record<string, string> = {
+    about: "A B O U T",
+    skills: "S K I L L S",
+    projects: "P R O J E C T S",
+    "work-experience": "W O R K  E X P E R I E N C E",
+    contact: "C O N T A C T",
+  };
+  return titles[section] || "";
+}
 
 function renderContent(section: string) {
   switch (section) {
@@ -35,11 +39,12 @@ function renderContent(section: string) {
 
 export default function SectionContent({ section }: { section: string }) {
   const router = useRouter();
+  const locale = useLocale();
 
   return (
     <ContentWindow
-      title={windowTitles[section]}
-      onClose={() => router.push("/")}
+      title={getWindowTitle(section)}
+      onClose={() => router.push(`/${locale}`)}
     >
       {renderContent(section)}
     </ContentWindow>

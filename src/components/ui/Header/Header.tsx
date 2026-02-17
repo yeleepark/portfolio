@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import LocaleToggle from "@/components/ui/LocaleToggle";
+import { useLocale } from "@/i18n/context";
 
 const menuItems = [
   { id: "about", label: "About" },
@@ -14,16 +18,20 @@ interface HeaderProps {
 }
 
 export default function Header({ activeItem }: HeaderProps) {
+  const locale = useLocale();
   return (
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-zinc-800 border-b-2 border-black dark:border-zinc-500 z-50 shadow-window transition-colors">
       {/* 모바일/태블릿: 이름 + 가로 스크롤 메뉴 */}
       <div className="lg:hidden">
-        {/* 이름 + 다크모드 토글 */}
+        {/* 이름 + 토글들 */}
         <div className="px-4 py-2 flex items-center justify-between border-b border-black dark:border-zinc-500">
           <span className="font-bold text-xs sm:text-sm tracking-wide sm:tracking-widest text-black dark:text-zinc-100">
             {`S E O Y O O N P A R K`}
           </span>
-          <ThemeToggle />
+          <div className="flex gap-2">
+            <LocaleToggle />
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* 가로 스크롤 메뉴 */}
@@ -32,7 +40,7 @@ export default function Header({ activeItem }: HeaderProps) {
             {menuItems.map((item) => (
               <Link
                 key={item.id}
-                href={`/${item.id}`}
+                href={`/${locale}/${item.id}`}
                 className={`
                   border-2 border-black dark:border-zinc-500 px-4 py-2 font-bold text-xs sm:text-sm whitespace-nowrap
                   transition-all
@@ -62,8 +70,11 @@ export default function Header({ activeItem }: HeaderProps) {
           </span>
         </div>
 
-        {/* 우측: 다크모드 토글 */}
-        <ThemeToggle />
+        {/* 우측: 언어 + 다크모드 토글 */}
+        <div className="flex gap-2">
+          <LocaleToggle />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

@@ -1,25 +1,38 @@
-const experiences = [
-  {
-    period: "2025.09 — 현재",
-    company: "바비톡",
-    role: "Frontend Developer",
-    descriptions: [
-      { text: "글로벌 웹 담당", href: "https://web.babitalk.com/ja" },
-    ],
-    isCurrent: true,
-  },
-  {
-    period: "2021.01 — 2025.09",
-    company: "메가존클라우드",
-    role: "Frontend Developer",
-    descriptions: [
-      { text: "호스팅케이알 개발", href: "https://hosting.kr" },
-    ],
-    isCurrent: false,
-  },
-];
+"use client";
+
+import { useLocale } from "@/i18n/context";
+import { getDictionary } from "@/i18n";
 
 export default function WorkExperienceSection() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
+
+  const experiences = [
+    {
+      period: `2025.09 — ${dict.workExperience.present}`,
+      company: "바비톡",
+      role: "Frontend Developer",
+      descriptions: [
+        {
+          text: dict.workExperience.babitalk.description,
+          href: "https://web.babitalk.com/ja",
+        },
+      ],
+      isCurrent: true,
+    },
+    {
+      period: "2021.01 — 2025.09",
+      company: "메가존클라우드",
+      role: "Frontend Developer",
+      descriptions: [
+        {
+          text: dict.workExperience.megazone.description,
+          href: "https://hosting.kr",
+        },
+      ],
+      isCurrent: false,
+    },
+  ];
   return (
     <div className="relative pl-6">
       <div className="absolute left-[7px] top-2 bottom-2 w-px bg-zinc-300 dark:bg-zinc-600" />
@@ -43,7 +56,7 @@ export default function WorkExperienceSection() {
               {exp.company}
               {exp.isCurrent && (
                 <span className="ml-2 text-xs font-medium text-white dark:text-black bg-black dark:bg-zinc-100 px-1.5 py-0.5 border border-black dark:border-zinc-100 align-middle">
-                  재직중
+                  {dict.workExperience.current}
                 </span>
               )}
             </h3>
