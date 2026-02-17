@@ -49,7 +49,7 @@ export default async function SectionPage({
   const { section } = await params;
 
   if (!validSections.includes(section)) {
-    redirect("/about");
+    redirect("/");
   }
 
   return <SectionContent section={section} />;

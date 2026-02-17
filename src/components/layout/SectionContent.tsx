@@ -39,7 +39,7 @@ export default function SectionContent({ section }: { section: string }) {
   return (
     <ContentWindow
       title={windowTitles[section]}
-      onClose={() => router.push("/about")}
+      onClose={() => router.push("/")}
     >
       {renderContent(section)}
     </ContentWindow>
