@@ -33,8 +33,8 @@ export const SECTION_META: Record<
     description:
       "직접 기획하고 개발한 웹 프로젝트들을 소개합니다. 각 프로젝트의 기술 스택과 구현 과정을 확인하세요.",
   },
-  career: {
-    title: "Career",
+  "work-experience": {
+    title: "Work Experience",
     description:
       "프론트엔드 개발자로서의 경력과 경험을 소개합니다. 참여한 프로젝트와 역할을 확인하세요.",
   },

@@ -6,7 +6,7 @@ import Sidebar from "@/components/ui/Sidebar";
 import WindowCard from "@/components/ui/WindowCard";
 import Footer from "@/components/ui/Footer";
 
-const validSections = ["about", "skills", "projects", "career", "contact"];
+const validSections = ["about", "skills", "projects", "work-experience", "contact"];
 
 export default function PortfolioLayout({
   children,

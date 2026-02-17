@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { SITE_CONFIG, SECTION_META } from "@/constants/site";
 import SectionContent from "@/components/layout/SectionContent";
 
-const validSections = ["about", "skills", "projects", "career", "contact"];
+const validSections = ["about", "skills", "projects", "work-experience", "contact"];
 
 export const dynamicParams = false;
 

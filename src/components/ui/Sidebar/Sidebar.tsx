@@ -4,7 +4,7 @@ const menuItems = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "career", label: "Career" },
+  { id: "work-experience", label: "Work Experience" },
   { id: "contact", label: "Contact" },
 ];
 
