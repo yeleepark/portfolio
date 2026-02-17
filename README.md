@@ -1,91 +1,82 @@
-# 🎮 Retro Game Portfolio
+# Portfolio
 
-An interactive, retro game-style portfolio website where visitors can explore different sections by moving a character through a pixel art world.
+A retro-style portfolio website inspired by classic Mac OS 9 aesthetics.
 
-![Retro Portfolio](https://img.shields.io/badge/Next.js-16.1.6-black?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-19.2.3-61dafb?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8?style=flat-square&logo=tailwind-css)
 
-## ✨ Features
-
-- 🕹️ **Keyboard-Controlled Movement** - Use arrow keys (or WASD) to move your character
-- 🎨 **Pixel Art Aesthetic** - Retro 8-bit/16-bit inspired design with custom fonts
-- 🌍 **Explorable World** - Navigate through different zones to discover portfolio sections
-- 💬 **RPG-Style Dialogs** - Interactive dialogs with typewriter effects
-- 🎯 **Interactive Zones** - 5 unique zones: About, Skills, Projects, Career, Contact
-- 🎬 **Smooth Animations** - Powered by Framer Motion for delightful transitions
-
 ## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (required)
 
 ### Installation
 
 ```bash
+# Install pnpm (if not installed)
+npm install -g pnpm
+
 # Install dependencies
-npm install
-# or
-bun install
+pnpm install
 
 # Run development server
-npm run dev
-# or
-bun dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-## 🎮 Controls
+### Available Commands
 
-- **⬆️ ⬇️ ⬅️ ➡️ Arrow Keys** - Move character
-- **W A S D** - Alternative movement keys
-- **SPACE / Enter** - Interact with zones
-- **ESC** - Close content overlay
+```bash
+pnpm dev          # Start dev server
+pnpm build        # Production build
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm format       # Format all files with Prettier
+pnpm format:check # Check formatting without changes
+```
 
 ## 📁 Project Structure
 
 ```
 src/
-├── app/                    # Next.js app directory
-├── components/
-│   ├── game/              # Game engine components
-│   ├── ui/                # Reusable UI components
-│   └── content/           # Portfolio content sections
-└── lib/
-    ├── data/              # Data and configuration
-    └── game/              # Game logic utilities
+├── app/
+│   ├── globals.css        # Global styles and Tailwind imports
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+└── components/
+    └── ui/                # UI components
+        ├── Button/        # Button component
+        ├── Header/        # Navigation header
+        ├── WindowCard/    # Main window container
+        └── WindowTitleBar/ # Window title bar with controls
 ```
 
-## 🎨 Customization
+## 🛠️ Tech Stack
 
-### Update Portfolio Content
+- **Framework**: Next.js 16.1.6 (App Router)
+- **UI Library**: React 19.2.3
+- **Language**: TypeScript 5 (strict mode)
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion 12.34.0
+- **3D Graphics**: Three.js 0.182.0
+- **Linting**: ESLint 9 with `eslint-config-prettier`
+- **Formatting**: Prettier 3.8.1
+- **Package Manager**: pnpm
 
-Edit `/src/lib/data/portfolio.ts` to add your:
-- Personal information
-- Skills and tech stack
-- Projects and achievements
-- Work experience
-- Contact details
+## 📝 Development Guidelines
 
-### Modify Game World
+- Use absolute imports with `@/` prefix: `import Button from "@/components/ui/Button"`
+- Follow [Conventional Commits](https://www.conventionalcommits.org/) format
+- Code is formatted with Prettier and linted with ESLint
+- TypeScript strict mode is enabled
 
-Edit `/src/lib/game/zones.ts` to customize:
-- Zone positions and sizes
-- Colors and icons
-- Entry dialogs
+See [CLAUDE.md](./CLAUDE.md) for detailed development guidelines.
 
-### Styling
+## 📄 License
 
-Edit `/src/app/globals.css` to customize the retro theme.
-
-# Tech Stack
-
-- **Next.js** 16.1.6
-- **React** 19.2.3
-- **TypeScript** 5
-- **Tailwind CSS** 4
-- **Framer Motion** 12.34.0
-- **ESLint** 9
-- **Prettier** 3.8.1
-
----
-
-Made with ❤️ and nostalgia for retro games
+MIT
