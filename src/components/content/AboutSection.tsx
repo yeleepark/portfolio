@@ -2,6 +2,10 @@ const Br = () => <br className="hidden lg:block" />;
 
 const about = [
   {
+    label: "Location",
+    value: "Seoul, South Korea",
+  },
+  {
     label: "Education",
     value: "중앙대학교 공연영상창작학부 졸업\n(사진 전공 / 디지털미디어 세부전공)",
   },
