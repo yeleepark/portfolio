@@ -83,17 +83,13 @@ export default function WindowCard() {
 
   return (
     <div
-      className="w-full max-w-[calc(100vw-2rem)] sm:max-w-sm border-2 bg-white border-black"
-      style={{
-        boxShadow:
-          "2px 2px 0 0 rgba(0, 0, 0, 0.25), inset -1px -1px 0 0 rgba(0, 0, 0, 0.15), inset 1px 1px 0 0 rgba(255, 255, 255, 0.9)",
-      }}
+      className="w-full border-2 bg-white border-black md:h-full md:min-h-0 flex flex-col shadow-window"
     >
       <WindowTitleBar title="S E O Y O O N P A R K" />
 
       {/* Content Area */}
       <div
-        className="p-4 sm:p-8 md:p-12 flex flex-col items-center justify-center gap-4 sm:gap-6 touch-none select-none"
+        className="flex-1 min-h-0 p-4 sm:p-8 md:p-12 flex flex-col items-center justify-center gap-4 sm:gap-6 touch-none select-none"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -102,7 +98,7 @@ export default function WindowCard() {
           alt="Character"
           width={500}
           height={500}
-          className="pixelated h-[30vh] sm:h-[40vh] md:h-[50vh] w-auto"
+          className="pixelated h-[30vh] md:h-auto md:max-h-full w-auto object-contain"
           priority
         />
       </div>

@@ -18,15 +18,15 @@ export default function PortfolioLayout({
     validSections.find((s) => pathname === `/${s}`) ?? null;
 
   return (
-    <div className="min-h-screen min-w-[360px] bg-zinc-200">
+    <div className="min-h-screen md:h-screen md:overflow-hidden min-w-[360px] bg-zinc-200 flex flex-col">
       <Header activeItem={activeSection} />
 
-      <div className="flex pt-24 lg:pt-16">
+      <div className="flex flex-1 pt-24 lg:pt-16 md:min-h-0">
         <div className="hidden lg:block">
           <Sidebar activeItem={activeSection} />
         </div>
 
-        <main className="flex-1 min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8 p-4 sm:p-6 lg:ml-48">
+        <main className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start md:items-stretch gap-4 sm:gap-6 lg:gap-8 p-6 sm:p-8 md:p-10 lg:p-12 lg:ml-48">
           <WindowCard />
           {children}
         </main>

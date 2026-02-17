@@ -19,13 +19,7 @@ interface HeaderProps {
 
 export default function Header({ activeItem }: HeaderProps) {
   return (
-    <header
-      className="fixed top-0 left-0 right-0 bg-white border-b-2 border-black z-50"
-      style={{
-        boxShadow:
-          "2px 2px 0 0 rgba(0, 0, 0, 0.25), inset -1px -1px 0 0 rgba(0, 0, 0, 0.15), inset 1px 1px 0 0 rgba(255, 255, 255, 0.9)",
-      }}
-    >
+    <header className="fixed top-0 left-0 right-0 bg-white border-b-2 border-black z-50 shadow-window">
       {/* 모바일/태블릿: 이름 + 가로 스크롤 메뉴 */}
       <div className="lg:hidden">
         {/* 이름 */}
@@ -48,16 +42,10 @@ export default function Header({ activeItem }: HeaderProps) {
                   transition-all
                   ${
                     activeItem === item.id
-                      ? "bg-black text-white"
-                      : "bg-white text-black hover:bg-zinc-100"
+                      ? "bg-black text-white shadow-button-active"
+                      : "bg-white text-black hover:bg-zinc-100 shadow-button"
                   }
                 `}
-                style={{
-                  boxShadow:
-                    activeItem === item.id
-                      ? "inset 2px 2px 0 0 rgba(0, 0, 0, 0.3)"
-                      : "2px 2px 0 0 rgba(0, 0, 0, 0.25)",
-                }}
               >
                 {item.label}
               </Link>
@@ -86,10 +74,7 @@ export default function Header({ activeItem }: HeaderProps) {
               rel="noopener noreferrer"
               aria-label={`${link.label} 프로필 보기`}
               className="border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] min-w-[44px] flex items-center justify-center
-                         transition-colors hover:bg-black hover:text-white"
-              style={{
-                boxShadow: "2px 2px 0 0 rgba(0, 0, 0, 0.25)",
-              }}
+                         transition-colors hover:bg-black hover:text-white shadow-button"
             >
               {link.label}
             </a>
