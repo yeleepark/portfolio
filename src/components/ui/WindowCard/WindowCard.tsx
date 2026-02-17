@@ -15,7 +15,11 @@ const directionImages: Record<Direction, string> = {
 
 export default function WindowCard() {
   const [direction, setDirection] = useState<Direction>("front");
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
+    null
+  );
 
+  // 키보드 이벤트
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
@@ -46,6 +50,37 @@ export default function WindowCard() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // 터치 이벤트 핸들러
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    setTouchStart({ x: touch.clientX, y: touch.clientY });
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - touchStart.x;
+    const deltaY = touch.clientY - touchStart.y;
+
+    const minSwipeDistance = 30; // 최소 스와이프 거리
+
+    // 가로/세로 중 더 큰 방향으로 판단
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // 좌우 스와이프
+      if (Math.abs(deltaX) > minSwipeDistance) {
+        setDirection(deltaX > 0 ? "right" : "left");
+      }
+    } else {
+      // 상하 스와이프
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        setDirection(deltaY > 0 ? "front" : "back");
+      }
+    }
+
+    setTouchStart(null);
+  };
+
   return (
     <div
       className="w-full max-w-[calc(100vw-2rem)] sm:max-w-sm border-2 bg-white border-black"
@@ -57,7 +92,11 @@ export default function WindowCard() {
       <WindowTitleBar title="S E O Y O O N P A R K" />
 
       {/* Content Area */}
-      <div className="p-4 sm:p-8 md:p-12 flex flex-col items-center justify-center gap-4 sm:gap-6">
+      <div
+        className="p-4 sm:p-8 md:p-12 flex flex-col items-center justify-center gap-4 sm:gap-6 touch-none select-none"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <Image
           src={directionImages[direction]}
           alt="Character"
