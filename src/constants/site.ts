@@ -8,6 +8,7 @@ export const SITE_CONFIG = {
   author: {
     name: "Seoyoon Park",
     jobTitle: "Frontend Developer",
+    email: "dev.yelee@gmail.com",
     github: "https://github.com/yeleepark",
     linkedin: "https://linkedin.com/in/yeleepark",
   },
