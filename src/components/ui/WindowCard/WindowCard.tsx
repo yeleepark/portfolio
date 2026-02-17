@@ -89,18 +89,45 @@ export default function WindowCard() {
 
       {/* Content Area */}
       <div
-        className="flex-1 min-h-0 p-4 sm:p-8 md:p-12 flex flex-col items-center justify-center gap-4 sm:gap-6 touch-none select-none"
+        className="relative flex-1 min-h-0 select-none"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <Image
-          src={directionImages[direction]}
-          alt="Character"
-          width={500}
-          height={500}
-          className="pixelated h-[30vh] md:h-auto md:max-h-full w-auto object-contain"
-          priority
+        {/* 클릭 영역: 상 */}
+        <button
+          className="absolute top-0 left-1/4 right-1/4 h-1/4 z-10 cursor-pointer"
+          onClick={() => setDirection("back")}
+          aria-label="뒤돌기"
         />
+        {/* 클릭 영역: 하 */}
+        <button
+          className="absolute bottom-0 left-1/4 right-1/4 h-1/4 z-10 cursor-pointer"
+          onClick={() => setDirection("front")}
+          aria-label="앞보기"
+        />
+        {/* 클릭 영역: 좌 */}
+        <button
+          className="absolute top-1/4 bottom-1/4 left-0 w-1/4 z-10 cursor-pointer"
+          onClick={() => setDirection("left")}
+          aria-label="왼쪽 보기"
+        />
+        {/* 클릭 영역: 우 */}
+        <button
+          className="absolute top-1/4 bottom-1/4 right-0 w-1/4 z-10 cursor-pointer"
+          onClick={() => setDirection("right")}
+          aria-label="오른쪽 보기"
+        />
+
+        <div className="h-full p-4 sm:p-8 md:p-12 flex items-center justify-center">
+          <Image
+            src={directionImages[direction]}
+            alt="Character"
+            width={500}
+            height={500}
+            className="pixelated h-[30vh] md:h-auto md:max-h-full w-auto object-contain"
+            priority
+          />
+        </div>
       </div>
     </div>
   );
