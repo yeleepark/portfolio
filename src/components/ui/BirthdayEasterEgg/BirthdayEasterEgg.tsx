@@ -80,8 +80,8 @@ export default function BirthdayEasterEgg() {
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ y: 30, opacity: 0 }}
-            transition={{ type: "spring", duration: 0.5, bounce: 0.4, exit: { duration: 0.6, ease: "easeInOut" } }}
+            exit={{ y: 30, opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
+            transition={{ type: "spring", duration: 0.5, bounce: 0.4 }}
             className="fixed inset-0 z-[101] flex items-center justify-center p-4"
           >
             <div
