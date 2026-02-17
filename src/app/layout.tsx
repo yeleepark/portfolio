@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_CONFIG } from "@/constants/site";
 import PortfolioLayout from "@/components/layout/PortfolioLayout";
 import "./globals.css";
@@ -78,6 +79,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <PortfolioLayout>{children}</PortfolioLayout>
+        <Analytics />
       </body>
     </html>
   );
