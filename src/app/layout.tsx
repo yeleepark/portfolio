@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import PortfolioLayout from "@/components/layout/PortfolioLayout";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#e4e4e7",
 };
 
@@ -18,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="bg-zinc-200">
       <body className="min-w-[360px] bg-zinc-200">
-        {children}
+        <PortfolioLayout>{children}</PortfolioLayout>
       </body>
     </html>
   );

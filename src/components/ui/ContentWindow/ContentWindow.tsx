@@ -6,15 +6,13 @@ import WindowTitleBar from "@/components/ui/WindowTitleBar";
 interface ContentWindowProps {
   title: string;
   children: React.ReactNode;
-  onClose: () => void;
-  isOpen: boolean;
+  onClose?: () => void;
 }
 
 export default function ContentWindow({
   title,
   children,
   onClose,
-  isOpen,
 }: ContentWindowProps) {
   return (
     <motion.div

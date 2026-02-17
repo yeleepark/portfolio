@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const socialLinks = [
   { label: "GitHub", url: "https://github.com/yeleepark" },
   { label: "LinkedIn", url: "https://linkedin.com/in/yeleepark" },
@@ -12,11 +14,10 @@ const menuItems = [
 ];
 
 interface HeaderProps {
-  onMenuClick?: (menuId: string) => void;
   activeItem?: string | null;
 }
 
-export default function Header({ onMenuClick, activeItem }: HeaderProps) {
+export default function Header({ activeItem }: HeaderProps) {
   return (
     <header
       className="fixed top-0 left-0 right-0 bg-white border-b-2 border-black z-50"
@@ -39,9 +40,9 @@ export default function Header({ onMenuClick, activeItem }: HeaderProps) {
         <div className="overflow-x-auto scrollbar-hide">
           <nav className="flex gap-1 p-2 min-w-max">
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => onMenuClick?.(item.id)}
+                href={`/${item.id}`}
                 className={`
                   border-2 border-black px-4 py-2 font-bold text-xs sm:text-sm whitespace-nowrap
                   transition-all
@@ -59,7 +60,7 @@ export default function Header({ onMenuClick, activeItem }: HeaderProps) {
                 }}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
         </div>
