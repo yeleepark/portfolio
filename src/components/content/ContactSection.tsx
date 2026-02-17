@@ -34,13 +34,13 @@ export default function ContactSection() {
         <div key={item.label}>
           <div className="flex items-center gap-2 mb-1">
             <span className="shrink-0">{item.icon}</span>
-            <span className="font-bold text-sm">{item.label}</span>
+            <span className="font-bold text-sm text-black dark:text-zinc-100">{item.label}</span>
           </div>
           <a
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-sm text-gray-700 hover:text-black hover:underline transition-colors pl-6"
+            className="block text-sm text-gray-700 dark:text-zinc-400 hover:text-black dark:hover:text-zinc-100 hover:underline transition-colors pl-6"
           >
             {item.text}
           </a>

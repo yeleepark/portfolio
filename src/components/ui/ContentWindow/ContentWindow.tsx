@@ -20,11 +20,11 @@ export default function ContentWindow({
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="w-full border-2 bg-white border-black flex flex-col md:h-full md:min-h-0 shadow-window"
+      className="w-full border-2 bg-white dark:bg-zinc-800 border-black dark:border-zinc-500 flex flex-col md:h-full md:min-h-0 shadow-window transition-colors"
     >
       <WindowTitleBar title={title} onClose={onClose} />
 
-      <div className="flex-1 md:overflow-y-auto p-3 sm:p-6 md:p-8">
+      <div className="flex-1 md:overflow-y-auto p-3 sm:p-6 md:p-8 text-black dark:text-zinc-100">
         {children}
       </div>
     </motion.div>

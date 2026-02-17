@@ -1,9 +1,5 @@
 import Link from "next/link";
-
-const socialLinks = [
-  { label: "GitHub", url: "https://github.com/yeleepark" },
-  { label: "LinkedIn", url: "https://linkedin.com/in/yeleepark" },
-];
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const menuItems = [
   { id: "about", label: "About" },
@@ -19,15 +15,15 @@ interface HeaderProps {
 
 export default function Header({ activeItem }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b-2 border-black z-50 shadow-window">
+    <header className="fixed top-0 left-0 right-0 bg-white dark:bg-zinc-800 border-b-2 border-black dark:border-zinc-500 z-50 shadow-window transition-colors">
       {/* 모바일/태블릿: 이름 + 가로 스크롤 메뉴 */}
       <div className="lg:hidden">
-        {/* 이름 */}
-        <div className="px-4 py-2 text-center border-b border-black">
-          <span className="font-bold text-xs sm:text-sm tracking-wide sm:tracking-widest">
-            <span className="hidden sm:inline">{`S E O Y O O N P A R K`}</span>
-            <span className="sm:hidden">{`S E O Y O O N P A R K`}</span>
+        {/* 이름 + 다크모드 토글 */}
+        <div className="px-4 py-2 flex items-center justify-between border-b border-black dark:border-zinc-500">
+          <span className="font-bold text-xs sm:text-sm tracking-wide sm:tracking-widest text-black dark:text-zinc-100">
+            {`S E O Y O O N P A R K`}
           </span>
+          <ThemeToggle />
         </div>
 
         {/* 가로 스크롤 메뉴 */}
@@ -38,12 +34,12 @@ export default function Header({ activeItem }: HeaderProps) {
                 key={item.id}
                 href={`/${item.id}`}
                 className={`
-                  border-2 border-black px-4 py-2 font-bold text-xs sm:text-sm whitespace-nowrap
+                  border-2 border-black dark:border-zinc-500 px-4 py-2 font-bold text-xs sm:text-sm whitespace-nowrap
                   transition-all
                   ${
                     activeItem === item.id
-                      ? "bg-black text-white shadow-button-active"
-                      : "bg-white text-black hover:bg-zinc-100 shadow-button"
+                      ? "bg-black dark:bg-zinc-100 text-white dark:text-black shadow-button-active"
+                      : "bg-white dark:bg-zinc-700 text-black dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-600 shadow-button"
                   }
                 `}
               >
@@ -54,32 +50,20 @@ export default function Header({ activeItem }: HeaderProps) {
         </div>
       </div>
 
-      {/* 데스크톱: 이름 + 소셜 링크 */}
+      {/* 데스크톱: 이름 + 다크모드 토글 */}
       <div className="hidden lg:flex items-center justify-between gap-2 px-4 py-2">
         {/* 좌측: 이름 + 타이틀 */}
         <div className="flex items-center gap-2">
-          <span className="font-bold text-sm tracking-widest">
+          <span className="font-bold text-sm tracking-widest text-black dark:text-zinc-100">
             {`S E O Y O O N P A R K`}
           </span>
-          <span className="text-xs text-gray-700">/ Frontend Developer</span>
+          <span className="text-xs text-gray-700 dark:text-zinc-400">
+            / Frontend Developer
+          </span>
         </div>
 
-        {/* 우측: 소셜 링크 */}
-        <div className="flex gap-2">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${link.label} 프로필 보기`}
-              className="border-2 border-black px-4 py-2 text-sm font-bold min-h-[44px] min-w-[44px] flex items-center justify-center
-                         transition-colors hover:bg-black hover:text-white shadow-button"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        {/* 우측: 다크모드 토글 */}
+        <ThemeToggle />
       </div>
     </header>
   );

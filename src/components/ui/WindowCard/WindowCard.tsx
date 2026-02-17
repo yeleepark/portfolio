@@ -83,7 +83,7 @@ export default function WindowCard() {
 
   return (
     <div
-      className="w-full border-2 bg-white border-black md:h-full md:min-h-0 flex flex-col shadow-window"
+      className="w-full border-2 bg-white dark:bg-zinc-800 border-black dark:border-zinc-500 md:h-full md:min-h-0 flex flex-col shadow-window transition-colors"
     >
       <WindowTitleBar title="S E O Y O O N P A R K" />
 

@@ -18,7 +18,7 @@ export default function PortfolioLayout({
     validSections.find((s) => pathname === `/${s}`) ?? null;
 
   return (
-    <div className="min-h-screen md:h-screen md:overflow-hidden min-w-[360px] bg-zinc-200 flex flex-col">
+    <div className="min-h-screen md:h-screen md:overflow-hidden min-w-[360px] bg-zinc-200 dark:bg-zinc-900 flex flex-col transition-colors">
       <Header activeItem={activeSection} />
 
       <div className="flex flex-1 pt-24 lg:pt-16 md:min-h-0">

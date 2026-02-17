@@ -43,7 +43,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e4e4e7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#e4e4e7" },
+    { media: "(prefers-color-scheme: dark)", color: "#18181b" },
+  ],
 };
 
 const jsonLd = {
@@ -61,8 +64,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="bg-zinc-200">
-      <body className="min-w-[360px] bg-zinc-200">
+    <html lang="ko" className="bg-zinc-200 dark:bg-zinc-900" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="min-w-[360px] bg-zinc-200 dark:bg-zinc-900 transition-colors">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
