@@ -5,7 +5,11 @@ const skills = [
   },
   {
     category: "Styling",
-    items: ["Tailwind CSS", "MUI"],
+    items: ["HTML", "CSS", "Tailwind CSS", "MUI"],
+  },
+  {
+    category: "State Management",
+    items: ["React Query", "Zustand"],
   },
   {
     category: "Cloud / Infra",
