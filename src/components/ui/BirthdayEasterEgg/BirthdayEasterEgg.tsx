@@ -55,7 +55,7 @@ export default function BirthdayEasterEgg() {
 
   useEffect(() => {
     const today = new Date();
-    if (today.getMonth() === 1 && today.getDate() === 17) {
+    if (today.getMonth() === 1 && today.getDate() === 18) {
       const key = `birthday-seen-${today.getFullYear()}`;
       if (!sessionStorage.getItem(key)) {
         setShow(true);
