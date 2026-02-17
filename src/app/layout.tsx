@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+  themeColor: "#e4e4e7",
 };
 
 export default function RootLayout({
@@ -15,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body >
+    <html lang="ko" className="bg-zinc-200">
+      <body className="min-w-[360px] bg-zinc-200">
         {children}
       </body>
     </html>

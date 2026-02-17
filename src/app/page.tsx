@@ -24,6 +24,7 @@ const validWindows = ["about", "skills", "projects", "career", "contact"];
 
 export default function Home() {
   const [openWindow, setOpenWindow] = useState<string | null>("about");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // 초기 로드 시 URL 해시 읽기
   useEffect(() => {
@@ -54,6 +55,7 @@ export default function Home() {
   // 메뉴 클릭 시 해시 업데이트
   const handleMenuClick = (menuId: string) => {
     window.location.hash = menuId;
+    setIsSidebarOpen(false);
   };
 
   // 윈도우 닫기 시 해시 제거
@@ -80,13 +82,21 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-200">
-      <Header />
+    <div className="min-h-screen min-w-[360px] bg-zinc-200">
+      <Header onMenuClick={handleMenuClick} activeItem={openWindow} />
 
-      <div className="flex pt-16">
-        <Sidebar onMenuClick={handleMenuClick} activeItem={openWindow} />
+      <div className="flex pt-24 lg:pt-16">
+        {/* Sidebar - 데스크톱만 표시 */}
+        <div className="hidden lg:block">
+          <Sidebar
+            onMenuClick={handleMenuClick}
+            activeItem={openWindow}
+            isOpen={true}
+            onClose={() => {}}
+          />
+        </div>
 
-        <main className="flex-1 min-h-[calc(100vh-4rem)] flex items-center justify-center gap-8 p-4 ml-48">
+        <main className="flex-1 min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8 p-4 sm:p-6 lg:ml-48">
           <WindowCard />
 
           <AnimatePresence>
