@@ -5,6 +5,7 @@ import Header from "@/components/ui/Header";
 import Sidebar from "@/components/ui/Sidebar";
 import WindowCard from "@/components/ui/WindowCard";
 import Footer from "@/components/ui/Footer";
+import BirthdayEasterEgg from "@/components/ui/BirthdayEasterEgg";
 
 const validSections = ["about", "skills", "projects", "work-experience", "contact"];
 
@@ -35,6 +36,7 @@ export default function PortfolioLayout({
           <Footer />
         </div>
       </div>
+      <BirthdayEasterEgg />
     </div>
   );
 }
