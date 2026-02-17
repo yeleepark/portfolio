@@ -16,7 +16,7 @@ const menuItems = [
 export default function Sidebar({ onMenuClick, activeItem }: SidebarProps) {
   return (
     <aside
-      className="fixed left-0 top-4 w-48 h-full bg-white border-r-2 border-black p-4"
+      className="fixed left-0 top-12 w-48 h-full bg-white border-r-2 border-black p-4"
       style={{
         boxShadow: "2px 0 0 0 rgba(0, 0, 0, 0.1)",
       }}
